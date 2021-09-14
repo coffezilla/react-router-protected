@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+
 import axios from 'axios';
 import {
 	setLocalStorageAuth,
@@ -7,14 +9,13 @@ import {
 
 // ENDPOINTS COLLECTION
 // local and server
-const ENDPOINT_LOGIN = '/login';
-const ENDPOINT_CHECK_AUTH = '/check-auth';
+// const ENDPOINT_LOGIN = '/login';
+// const ENDPOINT_CHECK_AUTH = '/check-auth';
 
 // for Netlify purpose, the endpoint has to be complete
-// const ENDPOINT_LOGIN =
-// 	'https://www.dev.bhxsites.com.br/playground/api/react-auth/login';
-// const ENDPOINT_CHECK_AUTH =
-// 	'https://www.dev.bhxsites.com.br/playground/api/react-auth/check-auth';
+const ENDPOINT_LOGIN = 'https://www.dev.bhxsites.com.br/playground/api/react-router-privated/login';
+const ENDPOINT_CHECK_AUTH =
+	'https://www.dev.bhxsites.com.br/playground/api/react-router-privated/check-auth';
 
 // interfaces
 export interface IStAuth {
