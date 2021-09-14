@@ -18,7 +18,6 @@ const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
 // ACTION
-
 // login
 export const rdxLoginUser = () => {
 	return {

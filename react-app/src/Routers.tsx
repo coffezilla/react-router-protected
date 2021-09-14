@@ -2,36 +2,42 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-// redux
-import { useSelector } from 'react-redux';
-import { IRdxUser } from './redux/ducks/User';
+// auth
+import { getAuth } from './components/Auth';
 
-// routers
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { rdxLoginUser, IRdxUser } from './redux/ducks/User';
+
+// router with requirement to access
 import ProtectedRoute from './ProtectedRoute';
 import UnprotectedRoute from './UnprotectedRoute';
 
-// public
+// page public
 import PageIndex from './pages/PageIndex';
 import PageAbout from './pages/PageAbout';
 import PageContact from './pages/PageContact';
 import PageNotFound from './pages/PageNotFound';
 
-// hub - only logged
+// page only logged
 import PageHub from './pages/PageHub';
 
-// login - only if not logged
+// page only if NOT logged
 import PageLogin from './pages/PageLogin';
 
 function Routers() {
+	const dispatch = useDispatch();
 	const rdxUserisAuth = useSelector((state: IRdxUser) => state.isAuth);
 	const [loading, setLoading] = useState<any>(true);
 
 	if (loading) {
 		if (!rdxUserisAuth) {
-			// getAuth().then((responseAuth) => { ... }
-			setTimeout(() => {
+			getAuth().then((responseAuth) => {
+				if (responseAuth.data.status === 1) {
+					dispatch(rdxLoginUser());
+				}
 				setLoading(false);
-			}, 3000);
+			});
 		}
 		return <p>Loading...</p>;
 	}

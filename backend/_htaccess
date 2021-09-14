@@ -1,0 +1,15 @@
+
+<IfModule mod_rewrite.c>
+   
+    RewriteEngine On
+    SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+    # online playgorund
+    RewriteRule ^login/?$ /playground/api/react-router-privated/login.php [NC,L]
+    RewriteRule ^check-auth/?$ /playground/api/react-router-privated/check.php [NC,L]
+
+    # localhost
+    # RewriteRule ^login/?$ /login.php [NC,L]
+    # RewriteRule ^check-auth/?$ /check.php [NC,L]    
+
+</IfModule>

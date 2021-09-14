@@ -1,6 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { clearLocalStorageAuth } from '../helpers/handleStorage';
 import { rdxLogoutUser, IRdxUser } from '../redux/ducks/User';
 
 const MainMenu = () => {
@@ -9,6 +10,7 @@ const MainMenu = () => {
 	const rdxUser = useSelector((state: IRdxUser) => state);
 	const rdxUserisAuth = useSelector((state: IRdxUser) => state.isAuth);
 	const logoutUser = () => {
+		clearLocalStorageAuth();
 		dispatch(rdxLogoutUser());
 		history.push('/login');
 	};
