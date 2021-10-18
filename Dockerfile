@@ -19,4 +19,4 @@ WORKDIR /app
 RUN npm install
 RUN npm install -g react-scripts
 
-CMD echo 'Image Builded - docker-react'
+CMD echo 'Image Builded - docker-react-backend'
